@@ -149,9 +149,9 @@ if __name__ == '__main__':
         data_dir = args.data_dir
 
     if args.group_info == 'no_group_info':
-        model = torch.load("../data/mdl/USPNet_fast_no_group_info.pth", map_location=device)
+        model = torch.load(os.path.join(os.getenv("USPNET_MODELS_DIR", "./models"), "USPNet_fast_no_group_info.pth"), map_location=device)
     else:
-        model = torch.load("../data/mdl/USPNet_fast.pth", map_location=device)
+        model = torch.load(os.path.join(os.getenv("USPNET_MODELS_DIR", "./models"), "USPNet_fast.pth"), map_location=device)
 
     if isinstance(model, torch.nn.DataParallel):
         # access the model inside the DataParallel wrapper

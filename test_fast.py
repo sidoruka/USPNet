@@ -1,3 +1,4 @@
+import os
 import torch as torch
 import numpy as np
 import argparse
@@ -282,9 +283,9 @@ if __name__ == '__main__':
     mode = "best path"
 
     if args.group_info == 'no_group_info':
-        model = torch.load("../data/mdl/USPNet_fast_no_group_info.pth", map_location=device)
+        model = torch.load(os.path.join(os.getenv("USPNET_MODELS_DIR", "./models"), "USPNet_fast_no_group_info.pth"), map_location=device)
     else:
-        model = torch.load("../data/mdl/USPNet_fast.pth", map_location=device)
+        model = torch.load(os.path.join(os.getenv("USPNET_MODELS_DIR", "./models"), "USPNet_fast.pth"), map_location=device)
 
 
     if isinstance(model, torch.nn.DataParallel):
